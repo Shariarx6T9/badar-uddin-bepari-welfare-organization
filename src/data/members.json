@@ -1,0 +1,259 @@
+[
+  {
+    "id": 1,
+    "name": "আব্দুল করিম",
+    "image": "/assets/member_logo.jpeg",
+    "joining_date": "2023-01-15",
+    "monthly_donation": 1500,
+    "description": "বদর উদ্দিন বেপারী কল্যাণ সংস্থার একজন নিবেদিত সদস্য। তিনি প্রতি মাসে শিক্ষাবৃত্তি তহবিলে অনুদান দেন।",
+    "donation_history": [
+      { "month": "Jan", "amount": 1500 },
+      { "month": "Feb", "amount": 1500 },
+      { "month": "Mar", "amount": 1500 },
+      { "month": "Apr", "amount": 2000 },
+      { "month": "May", "amount": 1500 },
+      { "month": "Jun", "amount": 1500 }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "রহিমা বেগম",
+    "image": "/assets/member_logo.jpeg",
+    "joining_date": "2023-02-20",
+    "monthly_donation": 1000,
+    "description": "সংস্থার স্বাস্থ্যসেবা প্রকল্পে নিয়মিত অনুদান দিয়ে আসছেন। তিনি দুঃস্থদের চিকিৎসা সেবায় আগ্রহী।",
+    "donation_history": [
+      { "month": "Jan", "amount": 1000 },
+      { "month": "Feb", "amount": 1000 },
+      { "month": "Mar", "amount": 1200 },
+      { "month": "Apr", "amount": 1000 },
+      { "month": "May", "amount": 1000 },
+      { "month": "Jun", "amount": 1000 }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "শফিকুল ইসলাম",
+    "image": "/assets/member_logo.jpeg",
+    "joining_date": "2023-03-10",
+    "monthly_donation": 2000,
+    "description": "একজন ব্যবসায়ী এবং সংস্থার অন্যতম প্রধান দাতা। তিনি যাকাত ও সাধারণ তহবিলে নিয়মিত অনুদান দেন।",
+    "donation_history": [
+      { "month": "Jan", "amount": 2000 },
+      { "month": "Feb", "amount": 2000 },
+      { "month": "Mar", "amount": 2000 },
+      { "month": "Apr", "amount": 2500 },
+      { "month": "May", "amount": 2000 },
+      { "month": "Jun", "amount": 2000 }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "ফাতেমা আক্তার",
+    "image": "/assets/member_logo.jpeg",
+    "joining_date": "2023-04-05",
+    "monthly_donation": 500,
+    "description": "একজন ছাত্রী হয়েও তিনি প্রতি মাসে তার সীমিত সামর্থ্য থেকে অনুদান দিয়ে অসহায় মানুষের পাশে দাঁড়ান।",
+    "donation_history": [
+      { "month": "Jan", "amount": 500 },
+      { "month": "Feb", "amount": 500 },
+      { "month": "Mar", "amount": 500 },
+      { "month": "Apr", "amount": 700 },
+      { "month": "May", "amount": 500 },
+      { "month": "Jun", "amount": 500 }
+    ]
+  },
+   {
+    "id": 5,
+    "name": "হারুনুর রশিদ",
+    "image": "/assets/member_logo.jpeg",
+    "joining_date": "2023-05-12",
+    "monthly_donation": 1200,
+    "description": "তিনি সংস্থার খাদ্য বিতরণ কর্মসূচিতে বিশেষভাবে আগ্রহী এবং প্রতি মাসে এই খাতে অনুদান করেন।",
+    "donation_history": [
+      { "month": "Jan", "amount": 1200 },
+      { "month": "Feb", "amount": 1200 },
+      { "month": "Mar", "amount": 1200 },
+      { "month": "Apr", "amount": 1500 },
+      { "month": "May", "amount": 1200 },
+      { "month": "Jun", "amount": 1200 }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "আলিয়া খাতুন",
+    "image": "/assets/member_logo.jpeg",
+    "joining_date": "2023-06-18",
+    "monthly_donation": 800,
+    "description": "বিধবা নারীদের স্বাবলম্বী করার প্রকল্পে তিনি নিয়মিত অনুদান দিয়ে থাকেন।",
+    "donation_history": [
+      { "month": "Jan", "amount": 800 },
+      { "month": "Feb", "amount": 800 },
+      { "month": "Mar", "amount": 1000 },
+      { "month": "Apr", "amount": 800 },
+      { "month": "May", "amount": 800 },
+      { "month": "Jun", "amount": 800 }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "জামাল উদ্দিন",
+    "image": "/assets/member_logo.jpeg",
+    "joining_date": "2023-07-22",
+    "monthly_donation": 1800,
+    "description": "তিনি সংস্থার সকল কার্যক্রমে সমানভাবে অনুদান দিয়ে থাকেন এবং একজন সক্রিয় সদস্য।",
+    "donation_history": [
+      { "month": "Jan", "amount": 1800 },
+      { "month": "Feb", "amount": 1800 },
+      { "month": "Mar", "amount": 1800 },
+      { "month": "Apr", "amount": 2000 },
+      { "month": "May", "amount": 1800 },
+      { "month": "Jun", "amount": 1800 }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "নাসরিন সুলতানা",
+    "image": "/assets/member_logo.jpeg",
+    "joining_date": "2023-08-30",
+    "monthly_donation": 700,
+    "description": "পথশিশুদের শিক্ষা কার্যক্রমে তিনি নিয়মিত সহায়তা করে থাকেন।",
+    "donation_history": [
+      { "month": "Jan", "amount": 700 },
+      { "month": "Feb", "amount": 700 },
+      { "month": "Mar", "amount": 700 },
+      { "month": "Apr", "amount": 900 },
+      { "month": "May", "amount": 700 },
+      { "month": "Jun", "amount": 700 }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "কামরুল হাসান",
+    "image": "/assets/member_logo.jpeg",
+    "joining_date": "2023-09-14",
+    "monthly_donation": 1600,
+    "description": "তিনি প্রতি মাসে শীতার্তদের জন্য বস্ত্র বিতরণ তহবিলে অনুদান দেন।",
+    "donation_history": [
+        { "month": "Jan", "amount": 1600 },
+        { "month": "Feb", "amount": 1600 },
+        { "month": "Mar", "amount": 1800 },
+        { "month": "Apr", "amount": 1600 },
+        { "month": "May", "amount": 1600 },
+        { "month": "Jun", "amount": 1600 }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "তানিয়া আহমেদ",
+    "image": "/assets/member_logo.jpeg",
+    "joining_date": "2023-10-25",
+    "monthly_donation": 900,
+    "description": "পরিবেশ রক্ষা কর্মসূচিতে তিনি একজন সক্রিয় দাতা এবং অংশগ্রহণকারী।",
+    "donation_history": [
+        { "month": "Jan", "amount": 900 },
+        { "month": "Feb", "amount": 900 },
+        { "month": "Mar", "amount": 1100 },
+        { "month": "Apr", "amount": 900 },
+        { "month": "May", "amount": 900 },
+        { "month": "Jun", "amount": 900 }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "ইমরান হোসেন",
+    "image": "/assets/member_logo.jpeg",
+    "joining_date": "2023-11-05",
+    "monthly_donation": 1300,
+    "description": "যুবকদের কর্মসংস্থান সৃষ্টি প্রকল্পে তিনি নিয়মিত আর্থিক সহায়তা প্রদান করেন।",
+    "donation_history": [
+        { "month": "Jan", "amount": 1300 },
+        { "month": "Feb", "amount": 1300 },
+        { "month": "Mar", "amount": 1300 },
+        { "month": "Apr", "amount": 1500 },
+        { "month": "May", "amount": 1300 },
+        { "month": "Jun", "amount": 1300 }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "সাদিয়া চৌধুরী",
+    "image": "/assets/member_logo.jpeg",
+    "joining_date": "2023-12-11",
+    "monthly_donation": 1100,
+    "description": "প্রতিবন্ধী ব্যক্তিদের পুনর্বাসন কার্যক্রমে তার অবদান অনস্বীকার্য।",
+    "donation_history": [
+        { "month": "Jan", "amount": 1100 },
+        { "month": "Feb", "amount": 1100 },
+        { "month": "Mar", "amount": 1100 },
+        { "month": "Apr", "amount": 1300 },
+        { "month": "May", "amount": 1100 },
+        { "month": "Jun", "amount": 1100 }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "মেহেদী হাসান",
+    "image": "/assets/member_logo.jpeg",
+    "joining_date": "2024-01-19",
+    "monthly_donation": 1700,
+    "description": "তিনি সংস্থার বৃদ্ধাশ্রম প্রকল্পে নিয়মিত অনুদান দিয়ে থাকেন।",
+    "donation_history": [
+        { "month": "Jan", "amount": 1700 },
+        { "month": "Feb", "amount": 1700 },
+        { "month": "Mar", "amount": 1900 },
+        { "month": "Apr", "amount": 1700 },
+        { "month": "May", "amount": 1700 },
+        { "month": "Jun", "amount": 1700 }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "নুসরাত জাহান",
+    "image": "/assets/member_logo.jpeg",
+    "joining_date": "2024-02-23",
+    "monthly_donation": 600,
+    "description": "তিনি এতিম শিশুদের জন্য তহবিলে নিয়মিত অনুদান দেন।",
+    "donation_history": [
+        { "month": "Jan", "amount": 600 },
+        { "month": "Feb", "amount": 600 },
+        { "month": "Mar", "amount": 600 },
+        { "month": "Apr", "amount": 800 },
+        { "month": "May", "amount": 600 },
+        { "month": "Jun", "amount": 600 }
+    ]
+  },
+   {
+    "id": 15,
+    "name": "রাজিব আহমেদ",
+    "image": "/assets/member_logo.jpeg",
+    "joining_date": "2024-03-15",
+    "monthly_donation": 1400,
+    "description": "তিনি একজন প্রকৌশলী এবং সংস্থার ডিজিটাল শিক্ষা কার্যক্রমে সহায়তা করেন।",
+    "donation_history": [
+        { "month": "Jan", "amount": 1400 },
+        { "month": "Feb", "amount": 1400 },
+        { "month": "Mar", "amount": 1600 },
+        { "month": "Apr", "amount": 1400 },
+        { "month": "May", "amount": 1400 },
+        { "month": "Jun", "amount": 1400 }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "সুমাইয়া পারভীন",
+    "image": "/assets/member_logo.jpeg",
+    "joining_date": "2024-04-28",
+    "monthly_donation": 1900,
+    "description": "তিনি নারী অধিকার এবং ক্ষমতায়ন নিয়ে কাজ করেন এবং এই খাতে অনুদান দেন।",
+    "donation_history": [
+        { "month": "Jan", "amount": 1900 },
+        { "month": "Feb", "amount": 1900 },
+        { "month": "Mar", "amount": 1900 },
+        { "month": "Apr", "amount": 2100 },
+        { "month": "May", "amount": 1900 },
+        { "month": "Jun", "amount": 1900 }
+    ]
+  }
+]
+

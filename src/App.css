@@ -1,0 +1,78 @@
+/* ============================
+   🌿 Global Root
+============================ */
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif; /* optional for modern NGO look */
+  background-color: #f5f7fb; /* soft light background */
+}
+
+/* ============================
+   🌿 Logo
+============================ */
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #34d399aa); /* green theme shadow */
+}
+
+/* ============================
+   🌿 Cards (Motive, Ambition, Login)
+============================ */
+.card {
+  padding: 2em;
+  border-radius: 1.5rem;
+  background: linear-gradient(to bottom right, rgba(52,211,153,0.7), rgba(255,255,255,0.5));
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================
+   🌿 Typography
+============================ */
+h1, h2, h3, h4 {
+  font-weight: 700;
+  color: #065f46; /* dark green for headings */
+}
+
+p, span, label {
+  color: #065f46; /* text in cards or forms */
+}
+
+a {
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #10b981; /* light green on hover */
+}
+
+/* ============================
+   🌿 Buttons
+============================ */
+button, .btn {
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s, opacity 0.3s;
+}
+
+button:hover, .btn:hover {
+  opacity: 0.95;
+}
+
+/* ============================
+   🌿 Responsive tweaks
+============================ */
+@media (max-width: 768px) {
+  .card {
+    padding: 1.5em;
+  }
+}
