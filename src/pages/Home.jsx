@@ -17,7 +17,10 @@ export default function Home() {
   const demoEmail = "member@example.com";
   const demoPassword = "123456";
 
-  const handleLogin = () => {
+  // ✅ Handle login properly
+  const handleLogin = (e) => {
+    e.preventDefault(); // Prevent page reload
+
     if (!email.trim() || !password) {
       toast.error("Please enter both email and password.");
       return;
@@ -31,7 +34,7 @@ export default function Home() {
 
     if (email === demoEmail && password === demoPassword) {
       toast.success("Login Successful!");
-      navigate("/admin-dashboard"); // Redirect to admin dashboard
+      setTimeout(() => navigate("/admin-dashboard"), 1000);
     } else {
       toast.error("Access Denied. Contact Shariar");
     }
@@ -83,13 +86,7 @@ export default function Home() {
           <div className="max-w-md mx-auto bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-gray-800 mt-8">
             <h2 className="text-2xl font-bold mb-4 text-center">সদস্য হিসেবে লগইন করুন</h2>
 
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                handleLogin();
-              }}
-              className="space-y-4"
-            >
+            <form onSubmit={handleLogin} className="space-y-4">
               <input
                 type="email"
                 placeholder="Email"
@@ -113,10 +110,18 @@ export default function Home() {
             </form>
 
             <div className="flex justify-between text-sm text-green-700 mt-2">
-              <button onClick={handleForgotPassword} className="underline hover:text-green-900 transition">
+              <button
+                type="button"
+                onClick={handleForgotPassword}
+                className="underline hover:text-green-900 transition"
+              >
                 Forgot Password?
               </button>
-              <button onClick={handleRegister} className="underline hover:text-green-900 transition">
+              <button
+                type="button"
+                onClick={handleRegister}
+                className="underline hover:text-green-900 transition"
+              >
                 Register
               </button>
             </div>

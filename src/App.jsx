@@ -1,5 +1,7 @@
 // src/App.jsx
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+
 import Home from "./pages/Home";
 import AllMembers from "./pages/AllMembers";
 import MemberDetails from "./pages/MemberDetails";
@@ -74,7 +76,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/admin-dashboard", // updated route for login redirect
+    path: "/admin-dashboard", // ✅ route where login redirects
     element: (
       <>
         <Header />
@@ -106,7 +108,14 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      {/* ✅ This makes toast notifications visible everywhere */}
+      <Toaster position="top-center" reverseOrder={false} />
+      {/* ✅ RouterProvider wraps all routes for proper useNavigate() */}
+      <RouterProvider router={router} />
+    </>
+  );
 }
 
 export default App;
