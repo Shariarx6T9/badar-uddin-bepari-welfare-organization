@@ -1,37 +1,112 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { Toaster } from "react-hot-toast";
-
-// Components
+// src/App.jsx
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/Home";
+import AllMembers from "./pages/AllMembers";
+import MemberDetails from "./pages/MemberDetails";
+import Contact from "./pages/ContactForm";
+import Revenue from "./pages/Revenue";
+import NewsFeed from "./pages/NewsFeed";
+import AdminDashboard from "./components/AdminDashboard";
+import Login from "./components/Login";
+import PageNotFound from "./pages/PageNotFound";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-// Pages
-import Home from "./pages/Home";
-import ContactForm from "./pages/ContactForm";
-import AllMembers from "./pages/AllMembers";
-import MemberDetails from "./pages/MemberDetails";
-import Revenue from "./pages/Revenue";
-import NewsFeed from "./pages/NewsFeed";
-import PageNotFound from "./pages/PageNotFound";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <>
+        <Header />
+        <Home />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/members",
+    element: (
+      <>
+        <Header />
+        <AllMembers />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/member/:id",
+    element: (
+      <>
+        <Header />
+        <MemberDetails />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/contact",
+    element: (
+      <>
+        <Header />
+        <Contact />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/revenue",
+    element: (
+      <>
+        <Header />
+        <Revenue />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/news",
+    element: (
+      <>
+        <Header />
+        <NewsFeed />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/admin-dashboard", // updated route for login redirect
+    element: (
+      <>
+        <Header />
+        <AdminDashboard />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/login",
+    element: (
+      <>
+        <Header />
+        <Login />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "*",
+    element: (
+      <>
+        <Header />
+        <PageNotFound />
+        <Footer />
+      </>
+    ),
+  },
+]);
 
-export default function App() {
-  return (
-    <Router>
-      <Header />
-      <Toaster position="top-right" reverseOrder={false} />
-      
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/contact" element={<ContactForm />} />
-        <Route path="/members" element={<AllMembers />} />
-        <Route path="/member/:id" element={<MemberDetails />} />
-        <Route path="/revenue" element={<Revenue />} />
-        <Route path="/news" element={<NewsFeed />} />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-
-      <Footer />
-    </Router>
-  );
+function App() {
+  return <RouterProvider router={router} />;
 }
+
+export default App;

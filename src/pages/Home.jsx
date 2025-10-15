@@ -1,13 +1,21 @@
+// src/pages/Home.jsx
 import React, { useState, useRef } from "react";
 import { toast } from "react-hot-toast";
 import { ref, push } from "firebase/database";
 import { database } from "../firebase.config";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
+  const contactRef = useRef(null);
+
+  // Member login state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
-  const contactRef = useRef(null);
+
+  // Demo login credentials
+  const demoEmail = "member@example.com";
+  const demoPassword = "123456";
 
   const handleLogin = () => {
     if (!email.trim() || !password) {
@@ -21,16 +29,19 @@ export default function Home() {
       return;
     }
 
-    toast.error("Access Denied. Contact Shariar");
+    if (email === demoEmail && password === demoPassword) {
+      toast.success("Login Successful!");
+      navigate("/admin-dashboard"); // Redirect to admin dashboard
+    } else {
+      toast.error("Access Denied. Contact Shariar");
+    }
   };
 
-  const handleForgotPassword = () => {
-    toast.error("Forgot Password: Contact Shariar");
-  };
+  const handleForgotPassword = () => toast.error("Forgot Password: Contact Shariar");
+  const handleRegister = () => toast.error("Register: Contact Shariar");
 
-  const handleRegister = () => {
-    toast.error("Register: Contact Shariar");
-  };
+  // Contact form state
+  const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
 
   const handleContactChange = (e) => {
     setContactForm({ ...contactForm, [e.target.name]: e.target.value });
@@ -38,7 +49,6 @@ export default function Home() {
 
   const handleContactSubmit = async (e) => {
     e.preventDefault();
-
     if (!contactForm.name || !contactForm.email || !contactForm.message) {
       toast.error("Please fill all fields!");
       return;
@@ -54,9 +64,7 @@ export default function Home() {
     }
   };
 
-  const scrollToContact = () => {
-    contactRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  const scrollToContact = () => contactRef.current?.scrollIntoView({ behavior: "smooth" });
 
   return (
     <div className="container mx-auto px-4 py-12">
@@ -72,32 +80,39 @@ export default function Home() {
           </p>
 
           {/* Member Login Card */}
-          <div className="max-w-md mx-auto bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-gray-800">
+          <div className="max-w-md mx-auto bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-gray-800 mt-8">
             <h2 className="text-2xl font-bold mb-4 text-center">সদস্য হিসেবে লগইন করুন</h2>
 
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full mb-4 px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 hover:border-green-500 transition"
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full mb-4 px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 hover:border-green-500 transition"
-            />
-
-            <button
-              onClick={handleLogin}
-              className="w-full mb-2 bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-semibold transition"
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleLogin();
+              }}
+              className="space-y-4"
             >
-              LOGIN
-            </button>
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 hover:border-green-500 transition"
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 hover:border-green-500 transition"
+              />
+              <button
+                type="submit"
+                className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-semibold transition"
+              >
+                LOGIN
+              </button>
+            </form>
 
-            <div className="flex justify-between text-sm text-green-700">
+            <div className="flex justify-between text-sm text-green-700 mt-2">
               <button onClick={handleForgotPassword} className="underline hover:text-green-900 transition">
                 Forgot Password?
               </button>
@@ -145,7 +160,7 @@ export default function Home() {
 
       {/* Contact Form Section */}
       <section ref={contactRef} className="contact-form py-16 px-4">
-        <div className="max-w-lg mx-auto p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition">
+        <div className="max-w-md mx-auto bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-gray-800">
           <h2 className="text-2xl font-bold mb-6 text-center text-green-800">Contact Us</h2>
 
           <form onSubmit={handleContactSubmit} className="space-y-4">
@@ -155,7 +170,7 @@ export default function Home() {
               placeholder="Your Name"
               value={contactForm.name}
               onChange={handleContactChange}
-              className="border p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-green-500 hover:border-green-500 transition"
+              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 hover:border-green-500 transition"
               required
             />
             <input
@@ -164,7 +179,7 @@ export default function Home() {
               placeholder="Your Email"
               value={contactForm.email}
               onChange={handleContactChange}
-              className="border p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-green-500 hover:border-green-500 transition"
+              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 hover:border-green-500 transition"
               required
             />
             <textarea
@@ -172,7 +187,7 @@ export default function Home() {
               placeholder="Your Message"
               value={contactForm.message}
               onChange={handleContactChange}
-              className="border p-3 rounded-lg w-full h-32 focus:outline-none focus:ring-2 focus:ring-green-500 hover:border-green-500 transition"
+              className="w-full px-4 py-3 border rounded-lg h-32 focus:outline-none focus:ring-2 focus:ring-green-500 hover:border-green-500 transition"
               required
             ></textarea>
             <button

@@ -1,76 +1,89 @@
 import React, { useState } from "react";
-import { toast } from "react-hot-toast";
 import { ref, push } from "firebase/database";
-import { database } from "../firebase.config";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { database as db } from "../firebase.config";
+const Contact = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
-export default function ContactForm() {
-  const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
-
-  const handleContactChange = (e) => {
-    setContactForm({ ...contactForm, [e.target.name]: e.target.value });
-  };
-
-  const handleContactSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (!contactForm.name || !contactForm.email || !contactForm.message) {
-      toast.error("Please fill all fields!");
-      return;
-    }
-
-    try {
-      await push(ref(database, "contactMessages"), contactForm);
-      toast.success("Message sent successfully!");
-      setContactForm({ name: "", email: "", message: "" });
-    } catch (error) {
-      console.error(error);
-      toast.error("Failed to send message!");
+    if (name && email && message) {
+      push(ref(db, "messages"), {
+        name,
+        email,
+        message,
+      })
+        .then(() => {
+          toast.success("Message sent successfully!");
+          setName("");
+          setEmail("");
+          setMessage("");
+        })
+        .catch(() => {
+          toast.error("Failed to send message. Please try again.");
+        });
+    } else {
+      toast.warn("Please fill in all fields.");
     }
   };
 
   return (
-    <div className="container mx-auto px-4 py-16">
-      <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg p-8 transition-transform hover:scale-105">
-        <h2 className="text-3xl font-bold mb-6 text-center text-green-700">Contact Us</h2>
-
-        <form onSubmit={handleContactSubmit} className="space-y-5">
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            value={contactForm.name}
-            onChange={handleContactChange}
-            className="border border-gray-300 p-4 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors hover:border-green-400"
-            required
-          />
-
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            value={contactForm.email}
-            onChange={handleContactChange}
-            className="border border-gray-300 p-4 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors hover:border-green-400"
-            required
-          />
-
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            value={contactForm.message}
-            onChange={handleContactChange}
-            className="border border-gray-300 p-4 rounded-lg w-full h-36 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors hover:border-green-400"
-            required
-          ></textarea>
-
+    <div className="container mx-auto px-4 py-8 flex justify-center">
+      <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+        <h1 className="text-4xl font-bold text-center text-gray-800 mb-8">
+          Contact Us
+        </h1>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label htmlFor="name" className="block text-gray-600 mb-2">
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full p-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-gray-600 mb-2">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full p-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="message" className="block text-gray-600 mb-2">
+              Message
+            </label>
+            <textarea
+              id="message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              rows="5"
+              className="w-full p-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            ></textarea>
+          </div>
           <button
             type="submit"
-            className="w-full py-4 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-all transform hover:scale-105"
+            className="w-full bg-gradient-to-r from-emerald-500 to-green-700 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 hover:opacity-90"
           >
-            Send Message
+            Submit
           </button>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
-}
+};
+
+export default Contact;
