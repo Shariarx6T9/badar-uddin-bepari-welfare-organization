@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Toaster } from "react-hot-toast"; // ✅ add this line
+import { Toaster } from "react-hot-toast"; 
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -15,10 +15,10 @@ export default function App() {
   return (
     <BrowserRouter>
       <div className="flex flex-col min-h-screen bg-[#f9fafb] text-gray-800">
-        {/* Toast Provider */}
-        <Toaster position="top-center" reverseOrder={false} />
-
         <Header />
+
+        {/* 🔹 Only one Toaster needed */}
+        <Toaster position="top-right" reverseOrder={false} />
 
         <main className="flex-grow">
           <Routes>

@@ -22,8 +22,8 @@ export default function NotFound() {
           alt="Not Found"
           style={{ width: "100%", maxWidth: "350px", marginBottom: "20px" }}
         />
-        <h1>The App you are requesting is not found on our system.</h1>
-        <p>Please try searching for another app.</p>
+        <h1>The Member you are searching is not found on our system.</h1>
+        <p>Please Cheak All Members List.</p>
         <button
           style={{
             background: "var(--primary)",
