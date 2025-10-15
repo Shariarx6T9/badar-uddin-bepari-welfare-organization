@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../assets/logo.jpeg"; // ✅ Import from src/assets
+import logo from "../assets/logo.jpeg";
 
 export default function Header() {
   const headerStyle = {
@@ -23,7 +23,7 @@ export default function Header() {
     width: "100%",
     maxWidth: "1200px",
     margin: "0 auto",
-    flexWrap: "wrap", // ✅ better for mobile responsiveness
+    flexWrap: "wrap",
     gap: "10px",
   };
 
@@ -52,7 +52,7 @@ export default function Header() {
     gap: "20px",
   };
 
-  const contributionBtnStyle = {
+  const buttonStyle = {
     background: "#059669",
     color: "#f8fafc",
     padding: "8px 16px",
@@ -61,6 +61,7 @@ export default function Header() {
     fontWeight: "500",
     fontSize: "14px",
     transition: "background-color 0.3s ease",
+    marginLeft: "10px",
   };
 
   const handleMouseEnter = (e) => {
@@ -74,7 +75,7 @@ export default function Header() {
   return (
     <header style={headerStyle}>
       <div style={containerStyle}>
-        {/* 🔹 Logo & Organization Name */}
+        {/* Logo & Name */}
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <img
             src={logo}
@@ -82,54 +83,40 @@ export default function Header() {
             style={logoStyle}
           />
           <div>
-            <span
-              style={{
-                fontWeight: 700,
-                fontSize: "16px",
-                lineHeight: "1.2",
-                display: "block",
-              }}
-            >
+            <span style={{ fontWeight: 700, fontSize: "16px", display: "block" }}>
               বদর উদ্দিন বেপারী কল্যাণ সংস্থা
             </span>
-            <p
-              style={{
-                fontSize: "12px",
-                color: "#d1fae5",
-                margin: 0,
-                marginTop: "2px",
-              }}
-            >
+            <p style={{ fontSize: "12px", color: "#d1fae5", margin: 0, marginTop: "2px" }}>
               “সেবা ও উন্নয়নই আমাদের মূল লক্ষ্য”
             </p>
           </div>
         </div>
 
-        {/* 🔹 Navigation Links */}
+        {/* Navigation Links */}
         <nav style={navContainerStyle}>
-          <NavLink to="/" style={getNavLinkStyle}>
-            HOME
-          </NavLink>
-          <NavLink to="/members" style={getNavLinkStyle}>
-            ALL MEMBERS
-          </NavLink>
-          <NavLink to="/newsfeed" style={getNavLinkStyle}>
-            NEWS FEED
-          </NavLink>
-          <NavLink to="/revenue" style={getNavLinkStyle}>
-            REVENUE
-          </NavLink>
+          <NavLink to="/" style={getNavLinkStyle}>HOME</NavLink>
+          <NavLink to="/members" style={getNavLinkStyle}>ALL MEMBERS</NavLink>
+          <NavLink to="/newsfeed" style={getNavLinkStyle}>NEWS FEED</NavLink>
+          <NavLink to="/revenue" style={getNavLinkStyle}>REVENUE</NavLink>
         </nav>
 
-        {/* 🔹 Contact Button */}
-        <div>
+        {/* Contact & Admin Login */}
+        <div style={{ display: "flex", alignItems: "center" }}>
           <NavLink
             to="/contact"
-            style={contributionBtnStyle}
+            style={buttonStyle}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            যোগাযোগ
+            Contact Us
+          </NavLink>
+          <NavLink
+            to="/login"
+            style={buttonStyle}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            Admin Login
           </NavLink>
         </div>
       </div>

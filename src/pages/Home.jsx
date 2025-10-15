@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { toast } from "react-hot-toast";
+import { ref, push } from "firebase/database";
+import { database } from "../firebase.config";
 
 export default function Home() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
+  const contactRef = useRef(null);
 
   const handleLogin = () => {
     if (!email.trim() || !password) {
@@ -28,6 +32,32 @@ export default function Home() {
     toast.error("Register: Contact Shariar");
   };
 
+  const handleContactChange = (e) => {
+    setContactForm({ ...contactForm, [e.target.name]: e.target.value });
+  };
+
+  const handleContactSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!contactForm.name || !contactForm.email || !contactForm.message) {
+      toast.error("Please fill all fields!");
+      return;
+    }
+
+    try {
+      await push(ref(database, "contactMessages"), contactForm);
+      toast.success("Message sent successfully!");
+      setContactForm({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to send message!");
+    }
+  };
+
+  const scrollToContact = () => {
+    contactRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="container mx-auto px-4 py-12">
       {/* Banner Section */}
@@ -41,8 +71,8 @@ export default function Home() {
             Making a difference in lives, one step at a time.
           </p>
 
-          {/* Login Card */}
-          <div className="max-w-md mx-auto bg-white rounded-2xl p-8 shadow-lg text-gray-800">
+          {/* Member Login Card */}
+          <div className="max-w-md mx-auto bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-gray-800">
             <h2 className="text-2xl font-bold mb-4 text-center">সদস্য হিসেবে লগইন করুন</h2>
 
             <input
@@ -50,14 +80,14 @@ export default function Home() {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full mb-4 px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full mb-4 px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 hover:border-green-500 transition"
             />
             <input
               type="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full mb-4 px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full mb-4 px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 hover:border-green-500 transition"
             />
 
             <button
@@ -68,22 +98,29 @@ export default function Home() {
             </button>
 
             <div className="flex justify-between text-sm text-green-700">
-              <button onClick={handleForgotPassword} className="underline">
+              <button onClick={handleForgotPassword} className="underline hover:text-green-900 transition">
                 Forgot Password?
               </button>
-              <button onClick={handleRegister} className="underline">
+              <button onClick={handleRegister} className="underline hover:text-green-900 transition">
                 Register
               </button>
             </div>
           </div>
+
+          {/* Scroll to Contact Button */}
+          <button
+            onClick={scrollToContact}
+            className="mt-6 px-6 py-3 bg-white text-green-700 font-semibold rounded-lg hover:bg-gray-100 transition"
+          >
+            Contact Us
+          </button>
         </div>
       </section>
 
       {/* Motive & Ambition Section */}
       <section className="motive-ambition flex-1 py-16 px-4 bg-gray-100">
         <div className="max-w-4xl mx-auto grid gap-10 md:grid-cols-2">
-          {/* Motive Card */}
-          <div className="card p-6 bg-white rounded-xl shadow-md">
+          <div className="card p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition">
             <h2 className="text-2xl font-semibold mb-4 text-green-800">Our Motive</h2>
             <p className="text-gray-700">
               To create a compassionate community where every individual,
@@ -93,8 +130,7 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Ambition Card */}
-          <div className="card p-6 bg-white rounded-xl shadow-md">
+          <div className="card p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition">
             <h2 className="text-2xl font-semibold mb-4 text-green-800">Our Ambition</h2>
             <p className="text-gray-700">
               Our ambition is to become a beacon of hope and sustainable change,
@@ -104,6 +140,48 @@ export default function Home() {
               foster a better tomorrow.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section ref={contactRef} className="contact-form py-16 px-4">
+        <div className="max-w-lg mx-auto p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition">
+          <h2 className="text-2xl font-bold mb-6 text-center text-green-800">Contact Us</h2>
+
+          <form onSubmit={handleContactSubmit} className="space-y-4">
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              value={contactForm.name}
+              onChange={handleContactChange}
+              className="border p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-green-500 hover:border-green-500 transition"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              value={contactForm.email}
+              onChange={handleContactChange}
+              className="border p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-green-500 hover:border-green-500 transition"
+              required
+            />
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              value={contactForm.message}
+              onChange={handleContactChange}
+              className="border p-3 rounded-lg w-full h-32 focus:outline-none focus:ring-2 focus:ring-green-500 hover:border-green-500 transition"
+              required
+            ></textarea>
+            <button
+              type="submit"
+              className="w-full py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition"
+            >
+              Send Message
+            </button>
+          </form>
         </div>
       </section>
     </div>
