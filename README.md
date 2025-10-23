@@ -62,4 +62,4 @@ npm install
 npm run dev
 
 অ্যাপ্লিকেশনটি http://localhost:5173 লিঙ্কে চালু হবে।
-Live Link: badar-uddin-bepari-welfare-organization.surge.sh
+Live Link: https://badar-uddin-bepari-welfare-organization.surge.sh
